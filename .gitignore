@@ -1,0 +1,36 @@
+# MSVC / Windows build artifacts
+*.obj
+*.lib
+*.dll
+*.exp
+*.exe
+*.ilk
+*.pdb
+*.idb
+
+# Autotools / Unix build artifacts
+Makefile
+config.h
+config.log
+config.status
+config.cache
+autom4te.cache/
+tkrzw.pc
+*.o
+*.a
+*.so*
+*.dylib
+
+# Test and temporary files
+casket*
+*.tkh
+*.tkt
+*.tks
+*.flat
+*.log
+*.vlog
+*~
+
+# IDE files
+.vs/
+*.user

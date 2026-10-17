@@ -277,7 +277,7 @@ std::string GetPathToTemporaryDirectory() {
 }
 
 Status WriteFile(const std::string& path, std::string_view content) {
-  const int32_t oflags = O_RDWR | O_CREAT | O_TRUNC;
+  const int32_t oflags = O_RDWR | O_CREAT | O_TRUNC | O_BINARY;
   const int32_t fd = open(path.c_str(), oflags, FILEPERM);
   if (fd < 0) {
     return GetErrnoStatus("open", errno);
@@ -318,7 +318,7 @@ Status WriteFileAtomic(const std::string& path, std::string_view content,
 Status ReadFile(const std::string& path, std::string* content, int64_t max_size) {
   assert(content != nullptr);
   content->clear();
-  const int32_t fd = open(path.c_str(), O_RDONLY);
+  const int32_t fd = open(path.c_str(), O_RDONLY | O_BINARY);
   if (fd < 0) {
     return GetErrnoStatus("open", errno);
   }
@@ -463,12 +463,12 @@ Status CopyFileData(const std::string& src_path, const std::string& dest_path) {
   }
   return status;
 #else
-  const int32_t src_fd = open(src_path.c_str(), O_RDONLY);
+  const int32_t src_fd = open(src_path.c_str(), O_RDONLY | O_BINARY);
   if (src_fd < 0) {
     return GetErrnoStatus("open", errno);
   }
   RemoveFile(dest_path);
-  const int32_t dest_fd = open(dest_path.c_str(), O_RDWR | O_CREAT | O_TRUNC, FILEPERM);
+  const int32_t dest_fd = open(dest_path.c_str(), O_RDWR | O_CREAT | O_TRUNC | O_BINARY, FILEPERM);
   if (dest_fd < 0) {
     const Status status = GetErrnoStatus("open", errno);
     close(src_fd);
