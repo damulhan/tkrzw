@@ -276,6 +276,12 @@ uint64_t tkrzw_primary_hash(const char* data_ptr, int32_t data_size, uint64_t nu
 uint64_t tkrzw_secondary_hash(const char* data_ptr, int32_t data_size, uint64_t num_shards);
 
 /**
+ * Releases an allocated memory region.
+ * @param ptr The pointer to the memory region.
+ */
+void tkrzw_free(void* ptr);
+
+/**
  * Releases an allocated array and its elements of allocated strings.
  * @param array The pointer to the array to release.
  * @param size The number of the elements of the array.

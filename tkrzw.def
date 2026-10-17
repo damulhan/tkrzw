@@ -95,6 +95,7 @@ tkrzw_file_synchronize
 tkrzw_file_truncate
 tkrzw_file_write
 tkrzw_float_to_str_be
+tkrzw_free
 tkrzw_free_str_array
 tkrzw_free_str_map
 tkrzw_future_free

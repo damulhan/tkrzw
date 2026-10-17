@@ -210,6 +210,12 @@ uint64_t tkrzw_secondary_hash(const char* data_ptr, int32_t data_size, uint64_t 
   }
 }
 
+void tkrzw_free(void* ptr) {
+  if (ptr != nullptr) {
+    xfree(ptr);
+  }
+}
+
 void tkrzw_free_str_array(TkrzwStr* array, int32_t size) {
   assert(array != nullptr);
   try {
